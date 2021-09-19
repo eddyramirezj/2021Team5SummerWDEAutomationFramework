@@ -14,6 +14,13 @@ public class TestBase extends BasePage {
     public SearchResultsPage getSearchResultsPage() {
         return new SearchResultsPage();
     }
+    public CartPage getCartPage() {
+        return new CartPage();
+    }
+
+    public SignInPageFromCartPage getSignInPageFromCartPage(){
+        return new SignInPageFromCartPage();
+    }
 
 
     /*

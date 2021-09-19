@@ -8,6 +8,13 @@
         <!--            </run>-->
         <!--        </groups>-->
         <classes>
+            <!-- <class name="testPom.TestHomepage"/> -->
+        </classes>
+    </test>
+
+
+    <test name="CartPage" >
+        <classes>
             <class name="testPom.TestHomepage"/>
         </classes>
     </test>
