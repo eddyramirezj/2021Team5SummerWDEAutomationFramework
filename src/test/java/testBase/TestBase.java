@@ -11,6 +11,10 @@ public class TestBase extends BasePage {
         return new Homepage();
     }
 
+    public SearchResultsPage getSearchResultsPage() {
+        return new SearchResultsPage();
+    }
+
 
     /*
     region ASSERTION HELPER METHODS

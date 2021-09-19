@@ -6,6 +6,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -57,7 +58,7 @@ public class BasePage {
     public void driverInit(@Optional("chrome") String browserName) {
 
         driver = getLocalDriver(browserName);
-        webDriverWait = new WebDriverWait(driver, 20);
+        webDriverWait = new WebDriverWait(driver, 7);
         driver.get(properties.getProperty("URL"));
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
@@ -103,7 +104,8 @@ public class BasePage {
 
     public void clickOnElement(WebElement element) {
         try {
-            webDriverWait.until(ExpectedConditions.elementToBeClickable(element)).click();
+            waitForElementToBeClickable(element);
+            element.click();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("COULD NOT CLICK ON ELEMENT");
@@ -112,6 +114,7 @@ public class BasePage {
 
     public void sendKeysToElement(WebElement element, String value) {
         try {
+            waitForElementToBeVisible(element);
             element.sendKeys(value);
         } catch (TimeoutException e) {
             element.sendKeys(value);
@@ -120,13 +123,21 @@ public class BasePage {
 
     public List<WebElement> getListOfElements(By by) {
         try {
-            webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
+            waitForAllElementsToBeVisibleBy(by);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return driver.findElements(by);
     }
+
+    public void hoverOverElement(WebElement element) {
+        Actions action = new Actions(driver);
+        action.moveToElement(element).build().perform();
+
+    }
+
+
 
 
 
@@ -149,6 +160,52 @@ public class BasePage {
         }
     }
 
+    public void waitForElementToBeClickable(WebElement element) {
+        try {
+            webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void waitForElementToBeSelected(WebElement element) {
+        try {
+            webDriverWait.until(ExpectedConditions.elementToBeSelected(element));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void waitForElementToBePresentBy(By locator) {
+        try {
+            webDriverWait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void waitForTitleOfPageToContain(String title) {
+        try {
+            webDriverWait.until(ExpectedConditions.titleContains(title));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void waitForElementToBeVisibleBy(By locator) {
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void waitForAllElementsToBeVisibleBy(By locator) {
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
