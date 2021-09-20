@@ -27,7 +27,7 @@ public class BasePage {
 
     private Properties properties;
     public final String ABSOLUTE_PATH = System.getProperty("user.dir");
-    private final String PROPERTIES_RELATIVE_PATH = "/src/main/resources/secret.properties";
+    public final String PROPERTIES_RELATIVE_PATH = "/src/main/resources/secret.properties";
     private final String PROP_FILE_PATH = ABSOLUTE_PATH + PROPERTIES_RELATIVE_PATH;
 
     @BeforeSuite (alwaysRun = true)

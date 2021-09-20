@@ -10,6 +10,10 @@ public class TestBase extends BasePage {
     public Homepage getHomepage() {
         return new Homepage();
     }
+    public RegisterPage getRegisterPage() {
+
+        return new RegisterPage();
+    }
 
     public SearchResultsPage getSearchResultsPage() {
         return new SearchResultsPage();
@@ -40,3 +44,4 @@ public class TestBase extends BasePage {
     }
 
 }
+
