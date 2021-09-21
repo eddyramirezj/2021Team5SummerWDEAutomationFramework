@@ -40,6 +40,17 @@ public class TestRegisterPage extends TestBase {
     }
 
     @Test
+    public void registerAccountFromRegisterPageWithPhoneNumber()
+    {
+        getRegisterPage().navigateToRegisterPageFromSignInPage();
+        getRegisterPage().registerAccountFromRegisterPage("Poyesh", "7039866555", "Snowy1", "Snowy1");
+
+        String expectedResults = "Verify email address";
+        String actualResults = driver.findElement(By.xpath("//h1[contains(text(), 'Verify email address')]")).toString();
+        Assert.assertEquals(actualResults, expectedResults);
+
+    }
+    @Test
     public void registerAccountFromRegisterPageWithWrongPassword2()
     {
         getRegisterPage().navigateToRegisterPageFromSignInPage();

@@ -66,7 +66,7 @@ public class RegisterPage extends BasePage {
     public WebElement createYourAmazonAccountButton;
     public By createYourAmazonAccountButtonLocator;
 
-    @FindBy (css = "#legalTextRow > a:nth-child(1)");
+    @FindBy (css = "#legalTextRow > a:nth-child(1)")
     public WebElement ConditionsOfUse;
     public By ConditionsOfUseLocator;
 
@@ -112,15 +112,17 @@ public class RegisterPage extends BasePage {
         reEnterPassWordBox.sendKeys(password);
     }
 
-    public void conditionsOfUse();
-    waitForElementToBeVisible()
+   /* public void conditionsOfUse();
+    waitForElementToBeVisible() */
+
     public void registerAccountFromRegisterPage(String name, String email,  String password1, String password2){
-        enterNameInNameBox(name);
-        enterEmailAddressInBox(email);
-        enterPassWordInBox(password1);
-        reEnterPassWordBox(password2);
-        waitForElementToBeVisible(continueButton);
-        clickOnElement(continueButton);
+            enterNameInNameBox(name);
+            enterEmailAddressInBox(email);
+            enterPassWordInBox(password1);
+            reEnterPassWordBox(password2);
+            waitForElementToBeVisible(continueButton);
+            clickOnElement(continueButton);
+
     }
 }
 
