@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="shopingCartSmokeTest" verbose="1" >
+
+
+
+    <test name="CartPage" >
+        <classes>
+            <class name="addToCart.TestCartPage"/>
+        </classes>
+    </test>
+
+    <parameter name="browserName" value="firefox"/>
+
+    <!--    <test name="Navigation">-->
+    <!--        <classes>-->
+    <!--            <class name="testPom.TestAccountPage"/>-->
+    <!--            <class name="testPom.TestContactUsPage"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+</suite>
